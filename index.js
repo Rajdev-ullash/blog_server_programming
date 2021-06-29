@@ -1,5 +1,4 @@
 const express = require('express')
-const app = express()
 const cors = require('cors');
 const MongoClient = require('mongodb').MongoClient;
 const bodyParser = require('body-parser');
@@ -7,6 +6,7 @@ const ObjectID = require('mongodb').ObjectID;
 require('dotenv').config();
 const port = 5000;
 
+const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
@@ -31,7 +31,7 @@ client.connect(err => {
   })
 
   app.get('/showBlog', (req, res)=>{
-    blogCollection.find()
+    blogCollection.find({})
     .toArray((err, documents)=>{
       console.log(err)
       res.send(documents)
