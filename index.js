@@ -57,12 +57,20 @@ app.post("/login",(req, res) => {
       console.log(err,result);
       const user = result[0];
       if (user.admin=== email && user.password===password) {
-          res.send(true)
+          res.send(user)
       }else{
           res.send(false)
       }
   })
 });
+
+// app.get('/loginInfo', (req, res) => {
+//   adminList.find({})
+//     .toArray((err, documents)=>{
+//       console.log(err)
+//       res.send(documents)
+//     })
+// })
   
 });
 
